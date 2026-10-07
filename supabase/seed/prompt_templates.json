@@ -1,0 +1,61 @@
+[
+ {"id":"tailor-resume","module":"materials","category":"editing","tier":"smart","sort_order":10,
+  "title":{"fr":"Adapter mon CV","en":"Tailor my résumé"},
+  "body":{"fr":"Voici mon CV et une offre d'emploi pour le poste de {{job_title}}.\n\nMon énoncé d'identité professionnelle : {{identity}}\n\nCV :\n{{resume}}\n\nOffre :\n{{job_description}}\n\nPropose les modifications qui feraient de moi une candidate ou un candidat de premier plan pour cette offre. Pour chaque suggestion, donne la section du CV concernée, le texte actuel, le texte proposé et une phrase qui explique pourquoi. Classe-les de la plus importante à la moins importante (5 à 8 suggestions). Termine par les compétences demandées dans l'offre qui n'apparaissent pas dans mon CV.",
+          "en":"Here is my résumé and a job posting for the {{job_title}} role.\n\nMy career identity statement: {{identity}}\n\nRésumé:\n{{resume}}\n\nJob posting:\n{{job_description}}\n\nSuggest the edits that would make me a top candidate for this posting. For each suggestion, give the résumé section, the current text, the proposed text and one sentence explaining why. Order them from most to least important (5 to 8 suggestions). End with the skills the posting asks for that are missing from my résumé."},
+  "variables":[
+   {"key":"job_title","source":"job","path":"title","label":{"fr":"Titre du poste","en":"Job title"}},
+   {"key":"resume","source":"resume","path":"raw_text","label":{"fr":"CV","en":"Résumé"}},
+   {"key":"job_description","source":"job","path":"description","untrusted":true,"label":{"fr":"Offre","en":"Job posting"}},
+   {"key":"identity","source":"profile","path":"identity_statement","required":false,"label":{"fr":"Identité professionnelle","en":"Career identity"}}],
+  "follow_ups":[{"fr":"Rends le ton plus dynamique","en":"Make the tone more energetic"},{"fr":"Donne-moi la version anglaise","en":"Give me the French version"},{"fr":"Sois plus concis","en":"Be more concise"}]},
+
+ {"id":"cover-letter","module":"materials","category":"editing","tier":"smart","sort_order":20,
+  "title":{"fr":"Lettre de motivation","en":"Cover letter"},
+  "body":{"fr":"Je postule au poste de {{job_title}} chez {{company}}. Rédige une lettre de motivation d'environ 300 mots, alignée sur les exigences de l'offre, en t'appuyant uniquement sur les faits de mon CV et sur mon énoncé d'identité professionnelle ({{identity}}). Structure : une accroche liée à l'entreprise, deux réalisations concrètes qui répondent aux besoins du poste, une conclusion qui propose un échange. Évite les formules toutes faites.\n\nCV :\n{{resume}}\n\nOffre :\n{{job_description}}",
+          "en":"I'm applying for the {{job_title}} role at {{company}}. Write a cover letter of about 300 words aligned with the posting's requirements, using only facts from my résumé and my career identity statement ({{identity}}). Structure: an opening tied to the company, two concrete achievements that answer the role's needs, a closing that proposes a conversation. Avoid stock phrases.\n\nRésumé:\n{{resume}}\n\nJob posting:\n{{job_description}}"},
+  "variables":[
+   {"key":"job_title","source":"job","path":"title","label":{"fr":"Titre du poste","en":"Job title"}},
+   {"key":"company","source":"job","path":"company","label":{"fr":"Entreprise","en":"Company"}},
+   {"key":"resume","source":"resume","path":"raw_text","label":{"fr":"CV","en":"Résumé"}},
+   {"key":"job_description","source":"job","path":"description","untrusted":true,"label":{"fr":"Offre","en":"Job posting"}},
+   {"key":"identity","source":"profile","path":"identity_statement","required":false,"label":{"fr":"Identité professionnelle","en":"Career identity"}}],
+  "follow_ups":[{"fr":"Ajoute une phrase sur notre échange à propos de…","en":"Add a sentence about…"},{"fr":"Rends le ton plus chaleureux","en":"Make the tone warmer"},{"fr":"Raccourcis à 200 mots","en":"Shorten to 200 words"}]},
+
+ {"id":"summarize-job","module":"search","category":"editing","tier":"fast","sort_order":30,
+  "title":{"fr":"Résumer l'offre","en":"Summarize the job"},
+  "body":{"fr":"Résume cette offre d'emploi en 3 phrases : le rôle, les exigences clés, ce qui la distingue. Puis liste en une ligne le salaire, le mode de travail et la langue de travail s'ils sont indiqués.\n\n{{job_description}}",
+          "en":"Summarize this job posting in 3 sentences: the role, the key requirements, what makes it stand out. Then list on one line the salary, work arrangement and working language if stated.\n\n{{job_description}}"},
+  "variables":[{"key":"job_description","source":"job","path":"description","untrusted":true,"label":{"fr":"Offre","en":"Job posting"}}],
+  "follow_ups":[]},
+
+ {"id":"company-research","module":"search","category":"research","tier":"research","sort_order":40,
+  "title":{"fr":"Rechercher l'entreprise","en":"Research the company"},
+  "body":{"fr":"Je prépare une candidature au poste de {{job_title}} chez {{company}}. Fais le point sur l'entreprise : mission et valeurs, produits et services, taille, actualités et priorités récentes, et ce que cela implique pour ce poste. Distingue clairement ce qui provient du document fourni de ce que tu sais par ailleurs, et signale ce qui pourrait être daté. Termine par 3 questions pertinentes à poser en entretien.\n\nDocument fourni (facultatif) :\n{{article}}",
+          "en":"I'm preparing an application for the {{job_title}} role at {{company}}. Brief me on the company: mission and values, products and services, size, recent news and priorities, and what this means for the role. Clearly separate what comes from the provided document from what you know otherwise, and flag what may be outdated. End with 3 relevant questions to ask in the interview.\n\nProvided document (optional):\n{{article}}"},
+  "variables":[
+   {"key":"job_title","source":"job","path":"title","label":{"fr":"Titre du poste","en":"Job title"}},
+   {"key":"company","source":"job","path":"company","label":{"fr":"Entreprise","en":"Company"}},
+   {"key":"article","source":"input","required":false,"untrusted":true,"label":{"fr":"Article ou page web (facultatif)","en":"Article or web page (optional)"}}],
+  "follow_ups":[{"fr":"Propose 3 autres questions","en":"Suggest 3 more questions"}]},
+
+ {"id":"interview-star","module":"interview","category":"brainstorming","tier":"smart","sort_order":50,
+  "title":{"fr":"Préparer l'entretien (STAR)","en":"Interview prep (STAR)"},
+  "body":{"fr":"Pour le poste de {{job_title}}, propose les 3 questions comportementales les plus probables en entretien. Pour chacune, rédige une réponse selon la méthode STAR (Situation, Tâche, Action, Résultat) en utilisant uniquement des expériences réelles de mon CV. Si un résultat chiffré manque, indique-le entre crochets plutôt que d'inventer un chiffre.\n\nCV :\n{{resume}}\n\nOffre :\n{{job_description}}",
+          "en":"For the {{job_title}} role, suggest the 3 most likely behavioral interview questions. For each, write an answer using the STAR method (Situation, Task, Action, Result) based only on real experiences from my résumé. If a quantified result is missing, flag it in brackets rather than inventing a number.\n\nRésumé:\n{{resume}}\n\nJob posting:\n{{job_description}}"},
+  "variables":[
+   {"key":"job_title","source":"job","path":"title","label":{"fr":"Titre du poste","en":"Job title"}},
+   {"key":"resume","source":"resume","path":"raw_text","label":{"fr":"CV","en":"Résumé"}},
+   {"key":"job_description","source":"job","path":"description","untrusted":true,"label":{"fr":"Offre","en":"Job posting"}}],
+  "follow_ups":[{"fr":"Pose-moi la première question et évalue ma réponse","en":"Ask me the first question and assess my answer"}]},
+
+ {"id":"thank-you-email","module":"offer","category":"editing","tier":"fast","sort_order":60,
+  "title":{"fr":"Courriel de remerciement","en":"Thank-you email"},
+  "body":{"fr":"J'ai passé un entretien pour le poste de {{job_title}} chez {{company}}. Nous avons notamment parlé de : {{topic}}. Rédige un courriel de remerciement bref (120 mots maximum) qui fait référence à cet échange, confirme mon intérêt et reste professionnel. Ajoute un objet.",
+          "en":"I interviewed for the {{job_title}} role at {{company}}. We talked in particular about: {{topic}}. Write a brief thank-you email (120 words max) that references this conversation, confirms my interest and stays professional. Include a subject line."},
+  "variables":[
+   {"key":"job_title","source":"job","path":"title","label":{"fr":"Titre du poste","en":"Job title"}},
+   {"key":"company","source":"job","path":"company","label":{"fr":"Entreprise","en":"Company"}},
+   {"key":"topic","source":"input","label":{"fr":"Sujet abordé en entretien","en":"Topic discussed"}}],
+  "follow_ups":[{"fr":"Rends le ton un peu plus enthousiaste","en":"Make it slightly more enthusiastic"}]}
+]

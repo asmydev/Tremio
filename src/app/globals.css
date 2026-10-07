@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+/* Tokens Boréal (système de design Tremio). Préfixe --tp- pour éviter
+   les collisions avec les variables de shadcn/ui (--accent, --border…). */
+:root {
+  --tp-surface-0: #F5F6F8; --tp-surface-1: #FFFFFF; --tp-surface-sunken: #ECEEF2;
+  --tp-border: #E2E5EC; --tp-border-strong: #D5D9E3;
+  --tp-ink: #12172B; --tp-ink-2: #3A4055; --tp-ink-muted: #5A6072;
+  --tp-accent: #2F3FD1; --tp-accent-fg: #FFFFFF; --tp-accent-soft: #ECEEFB; --tp-accent-strong: #1E2A99;
+  --tp-signal: #F2994A; --tp-signal-soft: #FDEBDC; --tp-signal-strong: #6B3A0C; --tp-signal-icon: #B4600F;
+  --tp-spotlight: #12172B; --tp-spotlight-fg: #FFFFFF; --tp-spotlight-muted: #AEB5CC; --tp-spotlight-border: #3A4260;
+  color-scheme: light;
+}
+.dark {
+  --tp-surface-0: #0E1220; --tp-surface-1: #171C2E; --tp-surface-sunken: #0A0D18;
+  --tp-border: #2A3046; --tp-border-strong: #3A4260;
+  --tp-ink: #EEF0F6; --tp-ink-2: #C3C8D8; --tp-ink-muted: #9AA1B8;
+  --tp-accent: #8C97F2; --tp-accent-fg: #0E1220; --tp-accent-soft: #1F2650; --tp-accent-strong: #C5CBFA;
+  --tp-signal-soft: #3A2614; --tp-signal-strong: #F8C899; --tp-signal-icon: #F2A766;
+  --tp-spotlight: #232A45; --tp-spotlight-border: #4A5378;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-surface-0: var(--tp-surface-0);
+  --color-surface-1: var(--tp-surface-1);
+  --color-surface-sunken: var(--tp-surface-sunken);
+  --color-line: var(--tp-border);
+  --color-line-strong: var(--tp-border-strong);
+  --color-ink: var(--tp-ink);
+  --color-ink-2: var(--tp-ink-2);
+  --color-ink-muted: var(--tp-ink-muted);
+  --color-accent: var(--tp-accent);
+  --color-accent-fg: var(--tp-accent-fg);
+  --color-accent-soft: var(--tp-accent-soft);
+  --color-accent-strong: var(--tp-accent-strong);
+  --color-signal: var(--tp-signal);
+  --color-signal-soft: var(--tp-signal-soft);
+  --color-signal-strong: var(--tp-signal-strong);
+  --color-signal-icon: var(--tp-signal-icon);
+  --color-spotlight: var(--tp-spotlight);
+  --color-spotlight-fg: var(--tp-spotlight-fg);
+  --color-spotlight-muted: var(--tp-spotlight-muted);
+  --color-spotlight-border: var(--tp-spotlight-border);
+
+  --font-display: var(--font-bricolage), "Figtree", system-ui, sans-serif;
+  --font-sans: var(--font-figtree), system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+}
+
+body {
+  background: var(--tp-surface-0);
+  color: var(--tp-ink);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+:focus-visible {
+  outline: 2px solid var(--tp-accent);
+  outline-offset: 2px;
+}
