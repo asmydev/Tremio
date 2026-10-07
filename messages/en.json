@@ -53,7 +53,7 @@
   },
   "login": {
     "title": "Sign in to Tremio",
-    "intro": "Get a sign-in link by email. No password to remember.",
+    "intro": "Enter your email address and we'll send you a secure sign-in link.",
     "email": "Email address",
     "submit": "Send me the link",
     "sent": "Link sent. Open your email to sign in.",

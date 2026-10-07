@@ -53,7 +53,7 @@
   },
   "login": {
     "title": "Connexion à Tremio",
-    "intro": "Recevez un lien de connexion par courriel. Aucun mot de passe à retenir.",
+    "intro": "Saisissez votre adresse courriel : nous vous enverrons un lien de connexion sécurisé.",
     "email": "Adresse courriel",
     "submit": "Recevoir le lien",
     "sent": "Lien envoyé. Ouvrez votre courriel pour vous connecter.",
