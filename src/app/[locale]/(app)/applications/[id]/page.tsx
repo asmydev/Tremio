@@ -11,6 +11,8 @@ import { TemplateSchema } from '@/lib/prompts/render';
 import type { Application } from '@/lib/applications';
 import { TailoredResume, type ResumeVersion } from '@/components/applications/tailored-resume';
 import { ResumeDocSchema } from '@/lib/resume/schema';
+import { TailoredLetter, type LetterVersion } from '@/components/applications/tailored-letter';
+import { LetterDocSchema } from '@/lib/letter/schema';
 
 export default async function ApplicationPage({ params, searchParams }: {
   params: Promise<{ locale: string; id: string }>;
@@ -33,12 +35,21 @@ export default async function ApplicationPage({ params, searchParams }: {
   const application = app as Application;
   const templates = (tpls ?? []).map((row) => TemplateSchema.parse(row));
   const titleOf = (templateId: string | null) => templates.find((tpl) => tpl.id === templateId)?.title[locale === 'en' ? 'en' : 'fr'] ?? t('document');
-  const documents: SavedDocument[] = (docs ?? []).filter((d) => d.kind !== 'resume_pdf').map((d) => ({ ...d, title: titleOf(d.template_id) }));
+  const documents: SavedDocument[] = (docs ?? []).filter((d) => d.kind !== 'resume_pdf' && d.kind !== 'cover_letter_doc').map((d) => ({ ...d, title: titleOf(d.template_id) }));
   const versions: ResumeVersion[] = (docs ?? [])
     .filter((d) => d.kind === 'resume_pdf')
     .flatMap((d) => {
       try {
         return [{ id: d.id, created_at: d.created_at, locale: d.locale === 'en' ? 'en' as const : 'fr' as const, doc: ResumeDocSchema.parse(JSON.parse(d.content)) }];
+      } catch {
+        return [];
+      }
+    });
+  const letters: LetterVersion[] = (docs ?? [])
+    .filter((d) => d.kind === 'cover_letter_doc')
+    .flatMap((d) => {
+      try {
+        return [{ id: d.id, created_at: d.created_at, locale: d.locale === 'en' ? 'en' as const : 'fr' as const, doc: LetterDocSchema.parse(JSON.parse(d.content)) }];
       } catch {
         return [];
       }
@@ -65,6 +76,7 @@ export default async function ApplicationPage({ params, searchParams }: {
           <DetailsForm app={application} />
           <div className="flex min-w-0 flex-col gap-6">
             <TailoredResume applicationId={application.id} defaultLocale={docLocale} versions={versions} genderSet={Boolean(profile?.grammatical_gender)} hasDescription={Boolean(application.job_description)} />
+            <TailoredLetter applicationId={application.id} defaultLocale={docLocale} versions={letters} hasDescription={Boolean(application.job_description)} />
             <section className="flex flex-col gap-4">
               <h2 className="font-display text-xl font-medium">{t('prepare')}</h2>
               {!application.job_description && <p className="rounded-md bg-signal-soft px-4 py-3 text-sm text-signal-strong">{t('noDescription')}</p>}

@@ -43,7 +43,7 @@ public/brand/                 logos SVG ; icônes d'app et manifeste PWA
 
 ## Déjà en place
 
-Auth par lien magique, FR/EN avec sélecteur, tokens de design, tableau de bord (action recommandée, compteurs, offres compatibles), Atelier IA avec 6 actions en flux, lecture de pages web, quota quotidien et journal des coûts. Profil et CV (import PDF/DOCX, profil suggéré par l'IA). Candidatures : Kanban, fiche détaillée, actions IA depuis la candidature, documents enregistrés. Entretiens : simulation avec questions sur mesure et évaluation STAR, historique des séances. Offres : recherche Adzuna (Canada), score de compatibilité expliqué par l IA, ajout en un clic aux candidatures. CV adapté au poste en PDF compatible ATS, avec accord grammatical choisi dans le profil.
+Auth par lien magique, FR/EN avec sélecteur, tokens de design, tableau de bord (action recommandée, compteurs, offres compatibles), Atelier IA avec 6 actions en flux, lecture de pages web, quota quotidien et journal des coûts. Profil et CV (import PDF/DOCX, profil suggéré par l'IA). Candidatures : Kanban, fiche détaillée, actions IA depuis la candidature, documents enregistrés. Entretiens : simulation avec questions sur mesure et évaluation STAR, historique des séances. Offres : recherche Adzuna (Canada), score de compatibilité expliqué par l IA, ajout en un clic aux candidatures. CV adapté au poste en PDF compatible ATS et en Word, lettre de présentation en PDF et en Word, avec accord grammatical choisi dans le profil.
 
 ## Feuille de route
 

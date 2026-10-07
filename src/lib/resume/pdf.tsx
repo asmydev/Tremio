@@ -1,6 +1,5 @@
 import 'server-only';
-import path from 'node:path';
-import { Document, Font, Link, Page, StyleSheet, Text, View, renderToBuffer } from '@react-pdf/renderer';
+import { Document, Link, Page, StyleSheet, Text, View, renderToBuffer } from '@react-pdf/renderer';
 import { RESUME_LABELS, type ResumeDoc } from './schema';
 
 /**
@@ -9,17 +8,7 @@ import { RESUME_LABELS, type ResumeDoc } from './schema';
  * (organisation et poste à gauche, lieu et dates à droite), sous-groupes de puces.
  * Reste compatible ATS : une colonne de lecture, vrai texte, police intégrée, aucune image.
  */
-const FONT_DIR = path.join(process.cwd(), 'src/lib/resume/fonts');
-Font.register({
-  family: 'SourceSans3',
-  fonts: [
-    { src: path.join(FONT_DIR, 'SourceSans3-Regular.ttf') },
-    { src: path.join(FONT_DIR, 'SourceSans3-Bold.ttf'), fontWeight: 'bold' },
-    { src: path.join(FONT_DIR, 'SourceSans3-It.ttf'), fontStyle: 'italic' },
-    { src: path.join(FONT_DIR, 'SourceSans3-BoldIt.ttf'), fontWeight: 'bold', fontStyle: 'italic' }
-  ]
-});
-Font.registerHyphenationCallback((word) => [word]); // pas de césure automatique
+import './fonts';
 
 const PRIMARY = '#004F90';
 const INK = '#000000';

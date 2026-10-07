@@ -5,14 +5,10 @@ import { createClient } from '@/lib/supabase/server';
 import { generateStructured } from '@/lib/ai/gateway';
 import { hasQuota, logRun } from '@/lib/ai/quota';
 import { ResumeDocSchema } from '@/lib/resume/schema';
+import { genderRule } from '@/lib/ai/gender';
 
 type Result<T> = { ok: true; data: T } | { ok: false; error: string };
 
-const GENDER_RULES: Record<string, string> = {
-  feminine: 'In French, use feminine forms for job titles and agreements (e.g. développeuse, analyste, ingénieure, conseillère, informaticienne, spécialisée).',
-  masculine: 'In French, use masculine forms for job titles and agreements (e.g. développeur, analyste, ingénieur, conseiller, informaticien, spécialisé).',
-  neutral: 'In French, prefer epicene wording (e.g. « spécialiste », « analyste », « personne responsable de… ») and avoid gendered agreements where possible. Never use inclusive dots (·) or parentheses, which ATS software reads poorly.'
-};
 
 /**
  * Génère un CV adapté à une candidature, structuré pour une mise en page ATS,
@@ -33,8 +29,7 @@ export async function generateTailoredResume(applicationId: string, locale: 'fr'
   if (!resume?.raw_text) return { ok: false, error: 'no_resume' };
   if (!app.job_description) return { ok: false, error: 'no_description' };
 
-  const gender = GENDER_RULES[profile?.grammatical_gender ?? '']
-    ?? 'In French, keep the grammatical gender the candidate already uses in the résumé for themselves; if it is unclear, prefer epicene wording. Never guess gender from the name.';
+  const gender = genderRule(profile?.grammatical_gender);
 
   try {
     const { output } = await generateStructured({

@@ -7,7 +7,7 @@ const nextConfig: NextConfig = {
   // Génération des PDF côté serveur : la bibliothèque reste hors du bundle.
   serverExternalPackages: ['@react-pdf/renderer'],
   // Les polices du CV sont lues sur le disque au moment de générer le PDF : on les inclut au déploiement.
-  outputFileTracingIncludes: { '/api/resume/[id]/pdf': ['./src/lib/resume/fonts/**'] },
+  outputFileTracingIncludes: { '/api/resume/[id]/pdf': ['./src/lib/resume/fonts/**'], '/api/letter/[id]/pdf': ['./src/lib/resume/fonts/**'] },
   experimental: {
     serverActions: { bodySizeLimit: '6mb' } // import de CV (PDF)
   }

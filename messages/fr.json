@@ -53,7 +53,7 @@
   },
   "login": {
     "title": "Connexion à Tremio",
-    "intro": "Saisissez votre adresse courriel : nous vous enverrons un lien de connexion sécurisé.",
+    "intro": "Recevez un lien de connexion par courriel. Aucun mot de passe à retenir.",
     "email": "Adresse courriel",
     "submit": "Recevoir le lien",
     "sent": "Lien envoyé. Ouvrez votre courriel pour vous connecter.",
@@ -304,5 +304,29 @@
     },
     "downloadDocx": "Télécharger en Word (modifiable)",
     "formatsHint": "Le PDF est la version à envoyer. La version Word vous permet de retoucher le texte avant de l'exporter vous-même en PDF."
+  },
+  "letter": {
+    "title": "Lettre de présentation",
+    "intro": "Une lettre rédigée pour ce poste à partir de votre CV et de l'offre : accroche sur l'entreprise, deux réalisations qui répondent à ses besoins, conclusion qui propose une rencontre. Même en-tête que votre CV adapté.",
+    "language": "Langue de la lettre",
+    "notes": "Ce que vous voulez souligner (facultatif)",
+    "notesPlaceholder": "Ex. : je connais déjà leurs produits, je peux commencer immédiatement, j'ai été recommandée par…",
+    "generate": "Rédiger ma lettre",
+    "regenerate": "Rédiger une nouvelle version",
+    "generating": "Rédaction de la lettre…",
+    "generatingHint": "Cela prend généralement 15 à 30 secondes.",
+    "downloadPdf": "Télécharger le PDF",
+    "downloadDocx": "Télécharger en Word (modifiable)",
+    "preview": "Lire la lettre",
+    "previous": "Versions précédentes ({count})",
+    "errors": {
+      "unauthorized": "Votre session a expiré. Reconnectez-vous.",
+      "daily_limit": "Vous avez atteint la limite quotidienne de générations.",
+      "not_found": "Candidature introuvable.",
+      "no_resume": "Importez d'abord votre CV dans Profil et CV.",
+      "no_description": "Ajoutez le texte de l'offre dans les détails de la candidature pour rédiger une lettre.",
+      "save_failed": "L'enregistrement a échoué. Réessayez.",
+      "ai_unavailable": "La rédaction de la lettre a échoué. Réessayez dans un instant."
+    }
   }
 }

@@ -1,19 +1,11 @@
-import { loadResumeDocument } from '@/lib/resume/load';
+import { loadGeneratedDocument, fileResponse, PDF } from '@/lib/documents/load';
+import { ResumeDocSchema } from '@/lib/resume/schema';
 import { renderResumePdf } from '@/lib/resume/pdf';
 
 export const runtime = 'nodejs';
 
-/** Télécharge un CV adapté en PDF. */
 export async function GET(_req: Request, { params }: { params: Promise<{ id: string }> }) {
-  const { id } = await params;
-  const res = await loadResumeDocument(id);
+  const res = await loadGeneratedDocument((await params).id, 'resume_pdf', ResumeDocSchema, 'CV');
   if (!res.ok) return new Response(null, { status: res.status });
-  const pdf = await renderResumePdf(res.doc, res.locale);
-  return new Response(new Uint8Array(pdf), {
-    headers: {
-      'Content-Type': 'application/pdf',
-      'Content-Disposition': `attachment; filename="${res.basename}.pdf"`,
-      'Cache-Control': 'private, no-store'
-    }
-  });
+  return fileResponse(await renderResumePdf(res.doc, res.locale), `${res.basename}.pdf`, PDF);
 }

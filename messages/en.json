@@ -53,7 +53,7 @@
   },
   "login": {
     "title": "Sign in to Tremio",
-    "intro": "Enter your email address and we'll send you a secure sign-in link.",
+    "intro": "Get a sign-in link by email. No password to remember.",
     "email": "Email address",
     "submit": "Send me the link",
     "sent": "Link sent. Open your email to sign in.",
@@ -304,5 +304,29 @@
     },
     "downloadDocx": "Download as Word (editable)",
     "formatsHint": "Send the PDF. The Word version lets you fine-tune the text before exporting it to PDF yourself."
+  },
+  "letter": {
+    "title": "Cover letter",
+    "intro": "A letter written for this role from your résumé and the posting: an opening about the company, two achievements that answer its needs, and a closing that proposes a meeting. Same header as your tailored résumé.",
+    "language": "Letter language",
+    "notes": "What you want to highlight (optional)",
+    "notesPlaceholder": "E.g. I already use their products, I can start right away, I was referred by…",
+    "generate": "Write my cover letter",
+    "regenerate": "Write a new version",
+    "generating": "Writing the letter…",
+    "generatingHint": "This usually takes 15 to 30 seconds.",
+    "downloadPdf": "Download PDF",
+    "downloadDocx": "Download as Word (editable)",
+    "preview": "Read the letter",
+    "previous": "Previous versions ({count})",
+    "errors": {
+      "unauthorized": "Your session expired. Sign in again.",
+      "daily_limit": "You've reached today's generation limit.",
+      "not_found": "Application not found.",
+      "no_resume": "Import your résumé first in Profile and résumé.",
+      "no_description": "Add the posting text in the application details to write a letter.",
+      "save_failed": "Saving failed. Try again.",
+      "ai_unavailable": "Writing the letter failed. Try again in a moment."
+    }
   }
 }
