@@ -53,11 +53,22 @@
   },
   "login": {
     "title": "Sign in to Tremio",
-    "intro": "Get a sign-in link by email. No password to remember.",
+    "intro": "Enter your email address and we'll send you a one-time sign-in code.",
     "email": "Email address",
-    "submit": "Send me the link",
-    "sent": "Link sent. Open your email to sign in.",
-    "error": "Sending failed. Check the address and try again."
+    "sendCode": "Send my code",
+    "sending": "Sending…",
+    "codeSent": "A sign-in code was sent to {email}. Enter it below.",
+    "code": "Sign-in code",
+    "verify": "Sign in",
+    "verifying": "Checking…",
+    "changeEmail": "Use another email",
+    "resend": "Resend code",
+    "resendIn": "Resend in {seconds}s",
+    "errors": {
+      "send": "Sending the code failed. Check the address and try again.",
+      "code": "Invalid or expired code. Check it or request a new one.",
+      "rateLimit": "Too many attempts. Wait a few minutes before trying again."
+    }
   },
   "profile": {
     "title": "Profile and résumé",

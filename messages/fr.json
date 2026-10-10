@@ -53,11 +53,22 @@
   },
   "login": {
     "title": "Connexion à Tremio",
-    "intro": "Recevez un lien de connexion par courriel. Aucun mot de passe à retenir.",
+    "intro": "Saisissez votre adresse courriel : nous vous enverrons un code de connexion à usage unique.",
     "email": "Adresse courriel",
-    "submit": "Recevoir le lien",
-    "sent": "Lien envoyé. Ouvrez votre courriel pour vous connecter.",
-    "error": "L'envoi a échoué. Vérifiez l'adresse et réessayez."
+    "sendCode": "Recevoir mon code",
+    "sending": "Envoi…",
+    "codeSent": "Un code de connexion a été envoyé à {email}. Saisissez-le ci-dessous.",
+    "code": "Code de connexion",
+    "verify": "Se connecter",
+    "verifying": "Vérification…",
+    "changeEmail": "Changer d'adresse",
+    "resend": "Renvoyer le code",
+    "resendIn": "Renvoyer dans {seconds} s",
+    "errors": {
+      "send": "L'envoi du code a échoué. Vérifiez l'adresse et réessayez.",
+      "code": "Code invalide ou expiré. Vérifiez-le ou demandez-en un nouveau.",
+      "rateLimit": "Trop de tentatives. Patientez quelques minutes avant de réessayer."
+    }
   },
   "profile": {
     "title": "Profil et CV",
