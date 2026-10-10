@@ -194,7 +194,9 @@
       "save_failed": "L'enregistrement a échoué. Réessayez."
     },
     "truncated": "Cette offre ne contient qu'un extrait tronqué : les documents générés seront moins précis. Ouvrez l'offre complète, copiez son texte et collez-le dans « Texte de l'offre », puis enregistrez.",
-    "openPosting": "Ouvrir l'offre"
+    "openPosting": "Ouvrir l'offre",
+    "versions": "{count, plural, one {# version} other {# versions}}",
+    "documentsCount": "{count, plural, one {# document} other {# documents}}"
   },
   "interviews": {
     "title": "Entretiens",

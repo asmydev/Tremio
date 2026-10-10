@@ -30,12 +30,9 @@ export function TailoredResume({ applicationId, defaultLocale, versions, genderS
   }
 
   return (
-    <section className="flex flex-col gap-4 rounded-xl border border-line bg-surface-1 p-5">
+    <div className="flex flex-col gap-4">
       <div className="flex flex-wrap items-start justify-between gap-3">
-        <div className="max-w-[520px]">
-          <h2 className="font-display text-xl font-medium">{t('title')}</h2>
-          <p className="mt-1 text-sm text-ink-muted">{t('intro')}</p>
-        </div>
+        <p className="max-w-[520px] text-sm text-ink-muted">{t('intro')}</p>
         <div role="group" aria-label={t('language')} className="flex rounded-md border border-line bg-surface-0 p-[3px]">
           {(['fr', 'en'] as const).map((l) => (
             <button key={l} type="button" aria-pressed={locale === l} onClick={() => setLocale(l)}
@@ -114,6 +111,6 @@ export function TailoredResume({ applicationId, defaultLocale, versions, genderS
           </ul>
         </details>
       )}
-    </section>
+    </div>
   );
 }

@@ -4,6 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { createClient } from '@/lib/supabase/server';
 import { Sidebar } from '@/components/sidebar';
+import { Collapsible } from '@/components/collapsible';
 import { ActionRunner } from '@/components/action-runner';
 import { DetailsForm } from '@/components/applications/details-form';
 import { DocumentsList, type SavedDocument } from '@/components/applications/documents-list';
@@ -22,6 +23,8 @@ export default async function ApplicationPage({ params, searchParams }: {
   const { action } = await searchParams;
   setRequestLocale(locale);
   const t = await getTranslations('applications');
+  const tResume = await getTranslations('resumePdf');
+  const tLetter = await getTranslations('letter');
   const supabase = await createClient();
 
   const [{ data: app }, { data: tpls }, { data: docs }, { data: profile }] = await Promise.all([
@@ -74,24 +77,28 @@ export default async function ApplicationPage({ params, searchParams }: {
 
         <div className="grid items-start gap-6 xl:grid-cols-[minmax(0,400px)_minmax(0,1fr)]">
           <DetailsForm app={application} />
-          <div className="flex min-w-0 flex-col gap-6">
-            <TailoredResume applicationId={application.id} defaultLocale={docLocale} versions={versions} genderSet={Boolean(profile?.grammatical_gender)} hasDescription={Boolean(application.job_description)} />
-            <TailoredLetter applicationId={application.id} defaultLocale={docLocale} versions={letters} hasDescription={Boolean(application.job_description)} />
-            <section className="flex flex-col gap-4">
-              <h2 className="font-display text-xl font-medium">{t('prepare')}</h2>
-              {!application.job_description && <p className="rounded-md bg-signal-soft px-4 py-3 text-sm text-signal-strong">{t('noDescription')}</p>}
-              {truncated && (
-                <p className="rounded-md bg-signal-soft px-4 py-3 text-sm text-signal-strong">
-                  {t('truncated')}{' '}
-                  {application.job_url && <a href={application.job_url} target="_blank" rel="noopener noreferrer" className="font-semibold underline underline-offset-2">{t('openPosting')}</a>}
-                </p>
-              )}
-              <ActionRunner templates={templates.filter((tpl) => tpl.id !== 'cover-letter')} defaultDocLocale={docLocale} applicationId={application.id} initialTemplateId={action} />
-            </section>
-            <section className="flex flex-col gap-3">
-              <h2 className="font-display text-xl font-medium">{t('documents')}</h2>
+          <div className="flex min-w-0 flex-col gap-3">
+            <Collapsible title={tResume('title')} meta={versions.length ? t('versions', { count: versions.length }) : undefined} defaultOpen={!action}>
+              <TailoredResume applicationId={application.id} defaultLocale={docLocale} versions={versions} genderSet={Boolean(profile?.grammatical_gender)} hasDescription={Boolean(application.job_description)} />
+            </Collapsible>
+            <Collapsible title={tLetter('title')} meta={letters.length ? t('versions', { count: letters.length }) : undefined}>
+              <TailoredLetter applicationId={application.id} defaultLocale={docLocale} versions={letters} hasDescription={Boolean(application.job_description)} />
+            </Collapsible>
+            <Collapsible title={t('prepare')} defaultOpen={Boolean(action)}>
+              <div className="flex flex-col gap-4">
+                {!application.job_description && <p className="rounded-md bg-signal-soft px-4 py-3 text-sm text-signal-strong">{t('noDescription')}</p>}
+                {truncated && (
+                  <p className="rounded-md bg-signal-soft px-4 py-3 text-sm text-signal-strong">
+                    {t('truncated')}{' '}
+                    {application.job_url && <a href={application.job_url} target="_blank" rel="noopener noreferrer" className="font-semibold underline underline-offset-2">{t('openPosting')}</a>}
+                  </p>
+                )}
+                <ActionRunner templates={templates.filter((tpl) => tpl.id !== 'cover-letter')} defaultDocLocale={docLocale} applicationId={application.id} initialTemplateId={action} />
+              </div>
+            </Collapsible>
+            <Collapsible title={t('documents')} meta={documents.length ? t('documentsCount', { count: documents.length }) : undefined}>
               <DocumentsList documents={documents} />
-            </section>
+            </Collapsible>
           </div>
         </div>
       </main>

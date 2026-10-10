@@ -194,7 +194,9 @@
       "save_failed": "Saving failed. Try again."
     },
     "truncated": "This posting only contains a truncated excerpt, so generated documents will be less precise. Open the full posting, copy its text, paste it into “Posting text”, then save.",
-    "openPosting": "Open the posting"
+    "openPosting": "Open the posting",
+    "versions": "{count, plural, one {# version} other {# versions}}",
+    "documentsCount": "{count, plural, one {# document} other {# documents}}"
   },
   "interviews": {
     "title": "Interviews",
