@@ -69,7 +69,7 @@ export default async function ApplicationPage({ params, searchParams }: {
             <ArrowLeft size={18} aria-hidden="true" />{t('back')}
           </Link>
           <p className="text-sm text-ink-muted">{[application.company, application.location, t(`status.${application.status}`)].filter(Boolean).join(' · ')}</p>
-          <h1 lang={application.lang ?? undefined} className="font-display text-[clamp(26px,3vw,36px)] font-bold leading-tight tracking-[-0.02em]">{application.title}</h1>
+          <h1 lang={application.lang ?? undefined} className="font-display text-[clamp(26px,3vw,36px)] font-bold leading-tight tracking-[-0.02em] [overflow-wrap:anywhere] hyphens-auto">{application.title}</h1>
         </header>
 
         <div className="grid items-start gap-6 xl:grid-cols-[minmax(0,400px)_minmax(0,1fr)]">
@@ -86,7 +86,7 @@ export default async function ApplicationPage({ params, searchParams }: {
                   {application.job_url && <a href={application.job_url} target="_blank" rel="noopener noreferrer" className="font-semibold underline underline-offset-2">{t('openPosting')}</a>}
                 </p>
               )}
-              <ActionRunner templates={templates} defaultDocLocale={docLocale} applicationId={application.id} initialTemplateId={action} />
+              <ActionRunner templates={templates.filter((tpl) => tpl.id !== 'cover-letter')} defaultDocLocale={docLocale} applicationId={application.id} initialTemplateId={action} />
             </section>
             <section className="flex flex-col gap-3">
               <h2 className="font-display text-xl font-medium">{t('documents')}</h2>

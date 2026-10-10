@@ -24,8 +24,8 @@ export function JobCard({ job }: { job: JobItem }) {
       </span>
       <div className="flex min-w-0 flex-[1_1_320px] flex-col gap-2">
         <div>
-          <h3 lang={job.lang ?? undefined} className="text-[17px] font-semibold leading-snug">{job.title}</h3>
-          <p className="text-sm text-ink-muted">{[job.company, job.location, job.salary, job.posted].filter(Boolean).join(' · ')}</p>
+          <h3 lang={job.lang ?? undefined} className="text-[17px] font-semibold leading-snug [overflow-wrap:anywhere] hyphens-auto">{job.title}</h3>
+          <p className="text-sm text-ink-muted [overflow-wrap:anywhere]">{[job.company, job.location, job.salary, job.posted].filter(Boolean).join(' · ')}</p>
         </div>
         {job.reasons.length > 0 && (
           <ul className="flex flex-col gap-1 text-sm">
