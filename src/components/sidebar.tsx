@@ -1,14 +1,16 @@
 import { getTranslations } from 'next-intl/server';
+import { BriefcaseBusiness, FileUser, LayoutDashboard, MessagesSquare, Sparkles, SquareKanban } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { LanguageSwitch } from './language-switch';
+import { SignOutButton } from './sign-out-button';
 
 const items = [
-  { href: '/', key: 'dashboard' },
-  { href: '/jobs', key: 'jobs' },
-  { href: '/applications', key: 'applications' },
-  { href: '/atelier', key: 'studio' },
-  { href: '/interviews', key: 'interviews' },
-  { href: '/profile', key: 'profile' }
+  { href: '/', key: 'dashboard', icon: LayoutDashboard },
+  { href: '/jobs', key: 'jobs', icon: BriefcaseBusiness },
+  { href: '/applications', key: 'applications', icon: SquareKanban },
+  { href: '/atelier', key: 'studio', icon: Sparkles },
+  { href: '/interviews', key: 'interviews', icon: MessagesSquare },
+  { href: '/profile', key: 'profile', icon: FileUser }
 ] as const;
 
 export async function Sidebar({ active }: { active: (typeof items)[number]['key'] }) {
@@ -22,23 +24,25 @@ export async function Sidebar({ active }: { active: (typeof items)[number]['key'
         <img src="/brand/tremio-logo-dark.svg" alt="Tremio" className="hidden h-9 w-auto dark:block" />
       </Link>
       <ul className="flex flex-col gap-1">
-        {items.map((item) => {
-          const current = item.key === active;
+        {items.map(({ href, key, icon: Icon }) => {
+          const current = key === active;
           return (
-            <li key={item.key}>
+            <li key={key}>
               <Link
-                href={item.href}
+                href={href}
                 aria-current={current ? 'page' : undefined}
-                className={`flex min-h-11 items-center rounded-[10px] px-3.5 ${current ? 'bg-accent-soft font-semibold text-accent-strong' : 'font-medium text-ink-2 hover:bg-surface-0'}`}
+                className={`flex min-h-11 items-center gap-3 rounded-[10px] px-3.5 ${current ? 'bg-accent-soft font-semibold text-accent-strong' : 'font-medium text-ink-2 hover:bg-surface-0'}`}
               >
-                {t(item.key)}
+                <Icon size={18} aria-hidden="true" className="flex-none" />
+                {t(key)}
               </Link>
             </li>
           );
         })}
       </ul>
-      <div className="mt-auto">
+      <div className="mt-auto flex flex-col gap-3">
         <LanguageSwitch />
+        <SignOutButton />
       </div>
     </nav>
   );
